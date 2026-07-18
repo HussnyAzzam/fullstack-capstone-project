@@ -25,10 +25,15 @@ router.get('/:id', async (req, res, next) => {
 		const db = await connectToDatabase();
 		const collection = db.collection("gifts");
 		const id = req.params.id;
+
+		if (!id || id.trim() === "") {
+			return res.status(400).json({ error: "Invalid or missing ID parameter" });
+		}
+
 		const gift = await collection.findOne({ id: id });
 
 		if (!gift) {
-			return res.status(404).send("Gift not found");
+			return res.status(404).json({ error: `Gift with ID ${id} not found` });
 		}
 
 		res.json(gift);
@@ -36,8 +41,6 @@ router.get('/:id', async (req, res, next) => {
 		next(e);
 	}
 });
-
-
 
 // Add a new gift
 router.post('/', async (req, res, next) => {
