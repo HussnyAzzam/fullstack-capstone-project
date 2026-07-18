@@ -1,4 +1,4 @@
-
+/*jshint esversion: 8 */
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -9,7 +9,6 @@ const pino = require('pino');  // Import Pino logger
 
 //Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
 const { body, validationResult } = require('express-validator');
-
 
 const logger = pino();  // Create a Pino logger instance
 
@@ -30,8 +29,8 @@ router.post('/register', async (req, res) => {
 
         const salt = await bcryptjs.genSalt(10);
         const hash = await bcryptjs.hash(req.body.password, salt);
-        const email=req.body.email;
-        console.log('email is',email);
+        const email = req.body.email;
+        console.log('email is', email);
         const newUser = await collection.insertOne({
             email: req.body.email,
             firstName: req.body.firstName,
@@ -48,7 +47,7 @@ router.post('/register', async (req, res) => {
 
         const authtoken = jwt.sign(payload, JWT_SECRET);
         logger.info('User registered successfully');
-        res.json({ authtoken,email });
+        res.json({ authtoken, email });
     } catch (e) {
         logger.error(e);
         return res.status(500).send('Internal server error');
@@ -56,19 +55,18 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-    console.log("\n\n Inside login")
+    console.log("\n\n Inside login");
 
     try {
-        // const collection = await connectToDatabase();
         const db = await connectToDatabase();
         const collection = db.collection("users");
         const theUser = await collection.findOne({ email: req.body.email });
 
         if (theUser) {
-            let result = await bcryptjs.compare(req.body.password, theUser.password)
-            if(!result) {
+            let result = await bcryptjs.compare(req.body.password, theUser.password);
+            if (!result) {
                 logger.error('Passwords do not match');
-                return res.status(404).json({ error: 'Wrong pasword' });
+                return res.status(404).json({ error: 'Wrong password' });
             }
             let payload = {
                 user: {
@@ -89,13 +87,12 @@ router.post('/login', async (req, res) => {
     } catch (e) {
         logger.error(e);
         return res.status(500).json({ error: 'Internal server error', details: e.message });
-      }
+    }
 });
 
 // update API
 router.put('/update', async (req, res) => {
-    // Task 2: Validate the input using `validationResult` and return approiate message if there is an error.
-
+    // Task 2: Validate the input using `validationResult` and return appropriate message if there is an error.
     const errors = validationResult(req);
 
     // Task 3: Check if `email` is present in the header and throw an appropriate error message if not present.
@@ -150,4 +147,5 @@ router.put('/update', async (req, res) => {
         return res.status(500).send("Internal Server Error");
     }
 });
+
 module.exports = router;
