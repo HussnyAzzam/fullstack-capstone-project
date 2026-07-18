@@ -23,10 +23,7 @@ jobs:
 
       - name: Run Linter
         run: |
-          jshint --esversion 8 ./giftlink-backend/app.js
-          jshint --esversion 8 ./giftlink-backend/routes/authRoutes.js
-          jshint --esversion 8 ./giftlink-backend/routes/giftRoutes.js
-          jshint --esversion 8 ./giftlink-backend/routes/searchRoutes.js
+          npx jshint ./giftlink-backend/app.js ./giftlink-backend/routes/ --config .jshintrc
           echo "Linted all the js files successfully"
 
   client_build:
