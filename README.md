@@ -40,8 +40,6 @@ v                                           v
 
 ## 🛠️ Full Technical Stack & Competencies
 
-| Layer | Technologies Used | Key Engineering Implementation |
-| :--- | :--- | :--- |
 | **Front-End** | React.js, JavaScript (ES6+), HTML5/CSS3 | Component-driven UI, dynamic routing, state hooks, asynchronous API integration. |
 | **Back-End** | Node.js, Express.js | Modular RESTful endpoints, JWT session handling, custom error-handling middleware. |
 | **Database** | MongoDB, Mongoose, NoSQL | Document schema design, aggregate queries, indexing, and CRUD pipelines. |
