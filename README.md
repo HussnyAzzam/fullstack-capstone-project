@@ -17,26 +17,20 @@
 
 This application simulates a real-world enterprise automotive dealership platform. Users can browse inventory across locations, filter dealership branches, review ratings, and submit customer feedback processed by a backend sentiment-analysis service.
 
-+-----------------------------------------------------------------------+
-|                            React.js Client                            |
-|             (SPA / Custom Components / State Management)               |
-+-----------------------------------------------------------------------+
-|
-REST API Calls
-v
-+-----------------------------------------------------------------------+
-|                        Node.js & Express API                          |
-|             (Authentication / Routing / Microservices)                |
-+-----------------------------------------------------------------------+
-|                                           |
-Database Queries                             Microservice Call
-v                                           v
-+-----------------------+                   +---------------------------+
-|   MongoDB Database    |                   |  Sentiment Analysis API   |
-| (Dealers & Reviews)   |                   |   (External Microservice) |
-+-----------------------+                   +---------------------------+
 
----
+React.js Client (SPA / Custom Components / State Management)
+-----
+
+REST API Calls -
+Node.js & Express API (Authentication / Routing / Microservices)
+
+-----
+
+Database Queries -> MongoDB Database (Dealers & Reviews)                     
+
+Microservice Call -> Sentiment Analysis API (External Microservice)
+
+-----
 
 ## 🛠️ Full Technical Stack & Competencies
 
@@ -70,21 +64,22 @@ v                                           v
    git clone [https://github.com/YOUR_USERNAME/ibm-fullstack-capstone.git](https://github.com/YOUR_USERNAME/ibm-fullstack-capstone.git)
    cd ibm-fullstack-capstone
 
-2. Configure Environment Variables:
+2. **Configure Environment Variables:**
     Create a .env file in the root directory:
     
     PORT=5000
     MONGO_URI=mongodb://localhost:27017/dealerships
     JWT_SECRET=your_jwt_secret_key
 
-3. Deploy Containers Locally:
+3. **Deploy Containers Locally:**
     docker-compose up --build
    Access the React application at http://localhost:3000 and the Node.js API server at http://localhost:5000.
 
-   👨‍💻 Developer Profile
-    Engineered by a Full-Stack Software Developer combining modern JavaScript technologies (MERN, Docker, Kubernetes) with 7+ years of expertise across           WordPress web design, digital marketing, Customer Success, technical support, and business process automation to build reliable, high-converting, user-        focused web applications.
-   
-     🌐 LinkedIn: [https://www.linkedin.com/in/hussnyazzam/]
 
-      💼 GitHub: [https://github.com/HussnyAzzam/fullstack-capstone-project]
+   ## 👨‍💻 Developer Profile
+    Engineered by a Full-Stack Software Developer combining modern JavaScript technologies (MERN, Docker, Kubernetes) with 7+ years of expertise across WordPress web design, digital marketing, Customer Success, technical support, and business process automation to build reliable, high-converting, user-focused web applications.
+   
+     🌐 LinkedIn: https://www.linkedin.com/in/hussnyazzam/
+
+      💼 GitHub: https://github.com/HussnyAzzam/fullstack-capstone-project
 
